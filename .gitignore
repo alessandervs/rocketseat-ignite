@@ -1,6 +1,6 @@
-01-GITHUB-EXPLORER/node_modules
-01-GITHUB-EXPLORER/.vscode
-01-GITHUB-EXPLORER/dist
+/01-GITHUB-EXPLORER/node_modules
+/01-GITHUB-EXPLORER/.vscode
+/01-GITHUB-EXPLORER/dist
 
 # Logs
 logs
@@ -16,7 +16,6 @@ dist
 dist-ssr
 *.local
 .env
-
 
 # Editor directories and files
 .vscode/*
