@@ -10,6 +10,8 @@ export const GlobalStyle = createGlobalStyle`
   --text-title: #363F5F;
   --text-body: #969cb2;
   --shape: #FFFFFF;
+  --input-background: #e7e9ee;
+  --input-border: #d7d7d7;
 }
 
 * {
@@ -77,6 +79,20 @@ button {
   border-radius: 0.24rem;
 
 }
+.button-modal-close {
+    border: 0;
+    background: transparent;
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+
+    transition: filter 0.2s;
+
+
+    &:hover {
+      filter: brightness(0.8)
+    }
+  }
 
 `
 
