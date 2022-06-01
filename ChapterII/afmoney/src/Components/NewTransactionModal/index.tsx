@@ -3,10 +3,11 @@ import Modal from "react-modal";
 import botaoFechar from "../../assets/botaoFechar.svg"
 import entradas from '../../assets/entradas.svg'
 import saidas from '../../assets/saidas.svg'
-import { FormEvent, useState } from "react";
-import { api } from "../../services/api";
+import { FormEvent, useContext, useState } from "react";
+
 
 import { Container, TransactionTypeContainer, RadioBox } from "./styles";
+import { TransactionsContext } from "../../TransactionsContext";
 
 
 interface NewTransactionModalProps {
@@ -15,25 +16,30 @@ interface NewTransactionModalProps {
 
 }
 export function NewTransactionModal({ isOpen, onRequestClose }: NewTransactionModalProps) {
+  const { createTransaction } = useContext(TransactionsContext)
+
   const [title, setTitle] = useState('')
   const [value, setValue] = useState(0)
   const [category, setCategory] = useState('')
-
   const [type, setType] = useState('deposit')
 
-  function handleCreateNewTransation(event: FormEvent) {
+
+  async function handleCreateNewTransation(event: FormEvent) {
     event.preventDefault()
 
-    const data = {
-      id: Math.random(),
+    await createTransaction({
       title,
-      value,
-      category,
       type,
-      createdAt: new Date()
-    }
+      category,
+      value,
+    })
 
-    api.post('/transaction', data)
+
+    setTitle('');
+    setValue(0);
+    setCategory('');
+    setType('deposit');
+    onRequestClose();
 
   }
 
