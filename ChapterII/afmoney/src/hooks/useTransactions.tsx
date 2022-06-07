@@ -1,5 +1,6 @@
-import { createContext, ReactNode, useEffect, useState } from 'react'
-import { api } from './services/api'
+import { createContext, ReactNode, useContext, useEffect, useState } from 'react'
+import { contextType } from 'react-modal';
+import { api } from '../services/api'
 
 
 interface Transaction {
@@ -39,7 +40,6 @@ export function TransactionsProvider({ children }: TransactionsContextProps) {
 
   }, [])
 
-  console.log(transactions)
 
   async function createTransaction(transactionInput: TransactionInput) {
 
@@ -71,4 +71,11 @@ export function TransactionsProvider({ children }: TransactionsContextProps) {
 
   )
 
+}
+
+export function useTransactions() {
+  const context = useContext(TransactionsContext)
+
+
+  return context;
 }
