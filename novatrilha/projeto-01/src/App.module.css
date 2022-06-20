@@ -1,0 +1,14 @@
+.wrapper {
+  max-width: 70rem;
+  margin: 2rem auto;
+  padding: 0 1rem;
+  /* se a tela for diminuida para menor que 70rem o conteúdo não ficará colado nas laterais*/
+
+  display: grid;
+  grid-template-columns: 256px 1fr;
+  gap: 2rem;
+  align-items: flex-start;
+  /*sempre ficar alinhado ao topo, sem esticar para acompanhar tamanho*/
+
+
+}
