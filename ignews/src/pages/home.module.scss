@@ -2,6 +2,9 @@
   max-width: 1120px;
   margin: 0 auto;
   padding: 0 2rem;
+
+  /*Para descontar a distancia o cabeçalho e 
+  manter a section centralizada*/
   height: calc(100vh - 5rem);
 
   display: flex;
@@ -40,6 +43,10 @@
       font-weight: bold;
     }
 
+  }
+
+  button {
+    margin-top: 2.5rem
   }
 
 }

@@ -18,4 +18,10 @@
 }
 ```
 
-- 
+# Metodos de autenticação Next Js
+
+- Token JWT: local storage;
+- Next Auth : simples, login social, para não se preocupar com armazenamento de dados de credenciais;
+- Serviços externos: Cognito, Auth0
+
+#
