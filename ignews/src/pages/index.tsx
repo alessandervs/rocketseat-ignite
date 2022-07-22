@@ -1,6 +1,6 @@
 import { GetStaticProps } from 'next'
 import Head from 'next/head'
-import { SunscribeButton } from '../components/SunscrieButton'
+import { SubscribeButton } from '../components/SubscribeButton'
 import { stripe } from '../services/stripe'
 
 import styles from './home.module.scss'
@@ -37,7 +37,7 @@ export default function Home({ product }: HomeProps) {
             <span>for {product.amount} month</span>
           </p>
 
-          <SunscribeButton priceId={product.priceId} />
+          <SubscribeButton priceId={product.priceId} />
         </section>
 
         <img src='/images/avatar.svg' alt='Girl coding' />

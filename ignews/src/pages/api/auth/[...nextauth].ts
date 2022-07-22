@@ -17,6 +17,50 @@ export default NextAuth({
     }),
   ],
   callbacks: {
+    async session({ session: user, session, token }) {
+
+      try {
+        const userActiveSubscription = await fauna.query(
+          q.Get(
+            q.Intersection([
+              q.Match(
+                q.Index('subscription_by_user_ref'),
+                q.Select(
+                  "ref",
+                  q.Get(
+                    q.Match(
+                      q.Index('user_by_email'),
+                      q.Casefold(session.user.email)
+                    )
+                  )
+                )
+              ),
+              q.Match(
+                q.Index('subscription_by_status'),
+                "active"
+              )
+            ])
+          )
+        )
+
+        let date = new Date(Date.now() + 1 * (60 * 60 * 1000)); //acrescenta 1 dia (para acrecentar hora, retirar " + 1 ")
+
+        return {
+          ...session,
+          activeSubscription: userActiveSubscription,
+          expires: String(date)
+        }
+
+      } catch {
+
+        return {
+          ...session,
+          activeSubscription: null
+        }
+      }
+
+    },
+
     async signIn({ user, account, profile }) {
       const { email } = user
 
